@@ -55,6 +55,14 @@ sed -i 's/^.*policy.*coder.*none.*PDF.*//' /etc/ImageMagick-6/policy.xml
 # DB側のログを表示しないため(additional_environment.rbでログを標準出力に出している)
 rm -f ./config/additional_environment.rb
 
+# Gemfileの修正
+# 参考リンク: https://github.com/agileware-jp/redmine-plugin-orb/pull/70
+# https://www.redmine.org/issues/40802
+if grep -q "require 'blankslate'" lib/redmine/views/builders/structure.rb
+then
+  echo 'gem "blankslate"' >> Gemfile
+fi
+
 bundle install --with test development
 bundle update
 bundle exec rake db:create db:migrate RAILS_ENV=test
