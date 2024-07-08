@@ -18,7 +18,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup
         run: |
           chmod +x /__w/redmica_ui_extension/redmica_ui_extension/.github/scripts/setup-redmica.sh
@@ -49,7 +49,7 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: password
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup
         run: |
           chmod +x /__w/redmica_ui_extension/redmica_ui_extension/.github/scripts/setup-redmica.sh
@@ -75,7 +75,7 @@ jobs:
     container:
       image: ruby:3.2
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup
         run: |
           chmod +x /__w/redmica_ui_extension/redmica_ui_extension/.github/scripts/setup-redmica.sh
